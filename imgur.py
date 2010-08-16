@@ -27,9 +27,7 @@ class SendToImgur():
 sti = SendToImgur()
 output = sti.upload(argv[1])
 if output:
-    clipboard = gtk.Clipboard(display = gtk.gdk.display_get_default(), selection = "CLIPBOARD")
-    clipboard.set_text(output)
-    clipboard.store()
     webbrowser.open_new_tab(output)
+    os.system('notify-send -i /usr/share/icons/imgur.png "Imgur" "Image has been uploaded"')
 else:    
-    os.system('notify-send -i /usr/share/icons/imageshack.png "ImageShack" "Error: cannot upload the image"')
+    os.system('notify-send -i /usr/share/icons/imgur.png "Imgur" "Error: cannot upload the image"')
